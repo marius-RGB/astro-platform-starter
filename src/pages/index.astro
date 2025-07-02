@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Zone secrète - Décompte</title>
+  <meta charset="UTF-8" />
+  <title>Zone temporaire protégée</title>
   <style>
     body {
       font-family: sans-serif;
       text-align: center;
       background-color: #f0f0f0;
       margin: 0;
+      padding: 0;
     }
-    #main-content {
+    #content {
       padding: 40px 20px;
     }
     #countdown {
-      font-size: 1.2em;
       font-weight: bold;
       color: red;
+      font-size: 1.5em;
       margin-top: 20px;
     }
-    header, footer {
-      background-color: #222;
-      color: white;
-      padding: 1em 0;
+    #secret-link {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.1em;
+    }
+    input, button {
+      font-size: 1em;
+      padding: 0.4em;
     }
     section {
       max-width: 600px;
@@ -34,19 +39,64 @@
     }
     #destroyed {
       display: none;
-      font-size: 1.6em;
-      color: darkred;
       margin-top: 100px;
+      font-size: 2em;
+      color: darkred;
     }
   </style>
 </head>
 <body>
-  <div id="main-content">
-    <header>
-      <h1>Bienvenue sur la zone confidentielle 🕵️‍♂️</h1>
-    </header>
+  <div id="content">
+    <h1>🔒 Accès Temporaire</h1>
+    <p>Ce site s’autodétruira dans <span id="countdown">30</span> secondes.</p>
 
     <section>
-      <h2>🎉 Document confidentiel</h2>
-      <p>
-        <a href="https://www.canva.com/design/DAGr93jidGE/1NWOY3M8uhBSy9YDaF8cMA/edit?utm_content=DAGr93jidGE&utm_campaign=
+      <h2>Entrez le code d'accès :</h2>
+      <input type="password" id="code" placeholder="Code..." />
+      <button id="validate">Valider</button>
+
+      <div id="secret-link">
+        ✅ Code correct ! Voici le document :
+        <br />
+        <a href="https://www.canva.com/design/DAGr93jidGE/1NWOY3M8uhBSy9YDaF8cMA/edit?utm_content=DAGr93jidGE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+           target="_blank" rel="noopener noreferrer">
+          📄 Document confidentiel
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <div id="destroyed">
+    💥 Ce site s’est autodétruit. Merci de votre visite.
+  </div>
+
+  <script>
+    // Démarrage du compte à rebours immédiat
+    let timeLeft = 30;
+    const countdownEl = document.getElementById("countdown");
+    const contentEl = document.getElementById("content");
+    const destroyedEl = document.getElementById("destroyed");
+
+    const timer = setInterval(() => {
+      timeLeft--;
+      countdownEl.textContent = timeLeft;
+
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        contentEl.style.display = "none";
+        destroyedEl.style.display = "block";
+      }
+    }, 1000);
+
+    // Validation du code
+    document.getElementById("validate").addEventListener("click", function () {
+      const code = document.getElementById("code").value.trim();
+      if (code === "CHG54Kb5ASw3") {
+        document.getElementById("secret-link").style.display = "block";
+      } else {
+        alert("Code incorrect !");
+      }
+    });
+  </script>
+</body>
+</html>
