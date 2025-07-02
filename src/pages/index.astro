@@ -21,7 +21,7 @@
   </style>
 </head>
 <body>
-  <h2>Entrez le code pour accéder au lien secret :</h2>
+  <h2>Veuillez renseigner le code :</h2>
   <input type="password" id="code" placeholder="Code" />
   <button onclick="checkCode()">Valider</button>
 
@@ -32,10 +32,15 @@
 
   <script>
     function checkCode() {
-      const userCode = document.getElementById("code").value;
-      const secretCode = "CHG54Kb5ASw3"; // Ton code secret ici
+      const input = document.getElementById("code");
+      const userCode = input.value.trim(); // on enlève espaces avant/après
+      const secretCode = "CHG54Kb5ASw3";
+
+      console.log("Code entré :", userCode);
+
       if (userCode === secretCode) {
         document.getElementById("secret").style.display = "block";
+        input.value = ""; // on vide le champ
       } else {
         alert("Code incorrect !");
       }
