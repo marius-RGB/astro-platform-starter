@@ -85,6 +85,10 @@
         clearInterval(timer);
         contentEl.style.display = "none";
         destroyedEl.style.display = "block";
+setTimeout(() => {
+  window.location.href = "about:blank";
+}, 3000); // 3 secondes après l’autodestruction
+
       }
     }, 1000);
 
