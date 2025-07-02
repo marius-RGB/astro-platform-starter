@@ -1,56 +1,52 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Zone secrète avec lien (listener JS)</title>
+  <meta charset="UTF-8">
+  <title>Zone secrète - Décompte</title>
   <style>
     body {
       font-family: sans-serif;
       text-align: center;
-      margin-top: 100px;
       background-color: #f0f0f0;
+      margin: 0;
     }
-    #secret {
-      display: none;
-      margin-top: 20px;
-      font-weight: bold;
-      background: white;
-      padding: 1em;
-      border-radius: 10px;
+    #main-content {
+      padding: 40px 20px;
     }
-    input, button {
+    #countdown {
       font-size: 1.2em;
-      padding: 0.4em 0.6em;
+      font-weight: bold;
+      color: red;
+      margin-top: 20px;
     }
-    input {
-      width: 200px;
-      margin-right: 10px;
+    header, footer {
+      background-color: #222;
+      color: white;
+      padding: 1em 0;
+    }
+    section {
+      max-width: 600px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    #destroyed {
+      display: none;
+      font-size: 1.6em;
+      color: darkred;
+      margin-top: 100px;
     }
   </style>
 </head>
 <body>
-  <h2>Veuillez renseigner la clé d'accès :</h2>
-  <input type="password" id="code" placeholder="Code..." />
-  <button id="valider">Valider</button>
+  <div id="main-content">
+    <header>
+      <h1>Bienvenue sur la zone confidentielle 🕵️‍♂️</h1>
+    </header>
 
-  <div id="secret">
-    🎉 Voici le document : <br />
-    <a href="https://www.canva.com/design/DAGr93jidGE/1NWOY3M8uhBSy9YDaF8cMA/edit?utm_content=DAGr93jidGE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer">DOCUMENT CONFIDENTIEL</a>
-  </div>
-
-  <script>
-    document.getElementById("valider").addEventListener("click", function() {
-      const input = document.getElementById("code");
-      const userCode = input.value.trim();
-      const secretCode = "CHG54Kb5ASw3";
-
-      if (userCode === secretCode) {
-        document.getElementById("secret").style.display = "block";
-        input.value = "";
-      } else {
-        alert("Code incorrect !");
-      }
-    });
-  </script>
-</body>
-</html>
+    <section>
+      <h2>🎉 Document confidentiel</h2>
+      <p>
+        <a href="https://www.canva.com/design/DAGr93jidGE/1NWOY3M8uhBSy9YDaF8cMA/edit?utm_content=DAGr93jidGE&utm_campaign=
