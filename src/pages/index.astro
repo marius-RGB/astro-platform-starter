@@ -1,48 +1,16 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <title>Zone secrète avec lien</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      margin-top: 100px;
-      background-color: #f0f0f0;
-    }
-    #secret {
-      display: none;
-      margin-top: 20px;
-      font-weight: bold;
-      background: white;
-      padding: 1em;
-      border-radius: 10px;
-    }
-  </style>
-</head>
-<body>
-  <h2>Entrez le code pour accéder au lien secret :</h2>
-  <input type="password" id="code" placeholder="Code" />
-  <button onclick="checkCode()">Valider</button>
+<button id="valider">Valider</button>
 
-  <div id="secret">
-    🎉 Voici le lien secret : <br />
-    <a href="https://www.canva.com/design/DAGr93jidGE/1NWOY3M8uhBSy9YDaF8cMA/edit?utm_content=DAGr93jidGE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer">Accéder au design Canva</a>
-  </div>
+<script>
+  document.getElementById("valider").addEventListener("click", function() {
+    const input = document.getElementById("code");
+    const userCode = input.value.trim();
+    const secretCode = "CHG54Kb5ASw3";
 
-  <script>
-    function checkCode() {
-      const input = document.getElementById("code");
-      const userCode = input.value.trim();
-      const secretCode = "CHG54Kb5ASw3";
-
-      if (userCode === secretCode) {
-        document.getElementById("secret").style.display = "block";
-        input.value = "";
-      } else {
-        alert("Code incorrect !");
-      }
+    if (userCode === secretCode) {
+      document.getElementById("secret").style.display = "block";
+      input.value = "";
+    } else {
+      alert("Code incorrect !");
     }
-  </script>
-</body>
-</html>
+  });
+</script>
